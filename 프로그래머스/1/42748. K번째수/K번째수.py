@@ -1,18 +1,18 @@
+# 버블 정렬
 def solution(array, commands):
     answer = []
     for command in commands: 
         i,j,k = command
         sub_array = array[i - 1:j] 
-        sorted_array = selection_sort(sub_array)  # 선택 정렬 호출
+        sorted_array = bubble_sort(sub_array)  # 선택 정렬 호출
         answer.append(sorted_array[k-1])
     return answer 
 
-def selection_sort(array):
+def bubble_sort(array):
+    # 버블정렬을 사용해서 리스트를 정렬하기 
     n = len(array)
-    for i in range(n-1):
-        min_index = i
-        for j in range(i +1, n):
-            if array[j] < array[min_index]:
-                min_index = j 
-        array[i], array[min_index] = array[min_index], array[i]
+    for i in range(n):
+        for j in range(n - i - 1): 
+            if array[j] > array[j + 1] :  # 오름 차순 정렬 
+                array[j], array[j+1] =array[j+1], array[j]
     return array 
